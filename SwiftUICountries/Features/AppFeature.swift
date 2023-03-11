@@ -43,15 +43,11 @@ struct AppView: View {
 
     var body: some View {
         
-        TabView {
-
-            CountryListView(store:
-                store.scope(state: \.countryListState, action: AppFeature.Action.countryList)
-            )
-            .tabItem {
-                Label("Countries", systemImage: "globe.europe.africa.fill")
-            }
-
+        CountryListView(store:
+            store.scope(state: \.countryListState, action: AppFeature.Action.countryList)
+        )
+        .tabItem {
+            Label("Countries", systemImage: "globe.europe.africa.fill")
         }
     }
 
