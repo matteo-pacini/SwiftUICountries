@@ -7,11 +7,13 @@
 
 import Foundation
 import ComposableArchitecture
+import RealmSwift
 
 // MARK: - Skeleton
 
 struct CountryPersistenceManager {
     var fetch: () async throws -> [Country]
+    var fetchNeighbors: (Country) async throws -> [Country]
     var store: ([Country]) async throws -> Void
 }
 
@@ -19,16 +21,15 @@ struct CountryPersistenceManager {
 
 extension CountryPersistenceManager: DependencyKey {
 
-    private static var jsonFileURL: URL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("countries.json")
-
     static var liveValue: CountryPersistenceManager = .init(fetch: {
-        let decoder = JSONDecoder()
-        let data = try Data(contentsOf: jsonFileURL)
-        return try decoder.decode([Country].self, from: data)
+        try Realm().objects(RealmCountry.self).map { $0.toModel() }
+    }, fetchNeighbors: { country in
+        try Realm().objects(RealmCountry.self).filter("ANY borders CONTAINS %@", country.cca3).map { $0.toModel() }
     }, store: { countries in
-        let encoder = JSONEncoder()
-        let data = try encoder.encode(countries)
-        try data.write(to: jsonFileURL)
+        try Realm().write {
+            let realmModels = countries.map { RealmCountry(from: $0) }
+            try Realm().add(realmModels, update: .error)
+        }
     })
 
 }

@@ -34,13 +34,11 @@ struct CountryFeature: ReducerProtocol {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                let borders = state.country.borders ?? []
+                let country = state.country
                 return .task {
                     await .neighborCountriesFetched(
                         TaskResult {
-                            let countries = try await countryPersistenceManager.fetch()
-                            let neighborCountries = countries.filter { borders.contains($0.cca3) }.sorted { $0.id < $1.id }
-                            return neighborCountries
+                            try await countryPersistenceManager.fetchNeighbors(country)
                         }
                     )
                 }

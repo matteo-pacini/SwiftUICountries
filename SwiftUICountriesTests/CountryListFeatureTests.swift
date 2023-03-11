@@ -18,6 +18,7 @@ final class CountryListFeatureTests: XCTestCase {
                               reducer: withDependencies {
             $0.countryRepository.fetchAll = { [.italy] }
             $0.countryPersistenceManager.fetch = { [] }
+            $0.countryPersistenceManager.fetchNeighbors = { _ in [] }
             $0.countryPersistenceManager.store = { _ in }
         } operation: {
             CountryListFeature()
@@ -42,6 +43,7 @@ final class CountryListFeatureTests: XCTestCase {
                               reducer: withDependencies {
             $0.countryRepository.fetchAll = { [] }
             $0.countryPersistenceManager.fetch = { [.italy] }
+            $0.countryPersistenceManager.fetchNeighbors = { _ in [] }
             $0.countryPersistenceManager.store = { _ in }
         } operation: {
             CountryListFeature()
@@ -70,6 +72,7 @@ final class CountryListFeatureTests: XCTestCase {
                 throw SomeError()
             }
             $0.countryPersistenceManager.fetch = { [] }
+            $0.countryPersistenceManager.fetchNeighbors = { _ in [] }
             $0.countryPersistenceManager.store = { _ in }
         } operation: {
             CountryListFeature()
