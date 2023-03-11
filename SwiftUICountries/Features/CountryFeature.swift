@@ -87,7 +87,7 @@ struct CountryView: View {
                 CountryViewRow(left: "Subregion", right: subregion)
             }
             if let capital = viewStore.country.capital?.first,
-               let capitalCoordinate = viewStore.country.capitalInfo.latlng {
+               let capitalCoordinate = viewStore.country.capitalInfo.latitudeAndLongitude {
                 #if os(iOS)
                 CountryViewRowLink(left: "Capital", right: capital) {
                     MapView(latitude: capitalCoordinate[0],

@@ -22,7 +22,7 @@ struct Country {
         let symbol: String?
     }
 
-    struct Idd {
+    struct InternationalDirectDialing {
         let root: String?
         let suffixes: [String]?
     }
@@ -32,9 +32,9 @@ struct Country {
         let common: String
     }
 
-    struct Denonym {
-        let f: String
-        let m: String
+    struct Demonym {
+        let female: String
+        let male: String
     }
 
     struct Maps {
@@ -54,7 +54,7 @@ struct Country {
     }
 
     struct CapitalInfo  {
-        let latlng: [Double]?
+        let latitudeAndLongitude: [Double]?
     }
 
     struct PostalCode {
@@ -63,7 +63,7 @@ struct Country {
     }
 
     let name: Name
-    let tld: [String]?
+    let topLevelDomains: [String]?
     let cca2: String
     let ccn3: String?
     let cca3: String
@@ -72,22 +72,22 @@ struct Country {
     let status: String
     let unMember: Bool
     let currencies: [String: Currency]?
-    let idd: Idd
+    let internationalDirectDialing: InternationalDirectDialing
     let capital: [String]?
     let altSpellings: [String]
     let region: String
     let subregion: String?
     let languages: [String: String]?
     let translations: [String: Translation]
-    let latlng: [Double]
+    let latitudeAndLongitude: [Double]
     let landlocked: Bool
     let borders: [String]?
     let area: Double
-    let denonyms: [String: Denonym]?
+    let demonyms: [String: Demonym]?
     let flag: String
     let maps: Maps
     let population: Int
-    let gini: [String: Double]?
+    let giniCoefficient: [String: Double]?
     let fifa: String?
     let car: Car
     let timezones: [String]
@@ -102,16 +102,72 @@ struct Country {
 
 // MARK: - Codable + Equatable
 
-extension Country: Codable, Equatable { }
+extension Country: Codable, Equatable {
+
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case topLevelDomains = "tld"
+        case cca2
+        case ccn3
+        case cca3
+        case cioc
+        case independent
+        case status
+        case unMember
+        case currencies
+        case internationalDirectDialing = "idd"
+        case capital
+        case altSpellings
+        case region
+        case subregion
+        case languages
+        case translations
+        case latitudeAndLongitude = "latlng"
+        case landlocked
+        case borders
+        case area
+        case demonyms
+        case flag
+        case maps
+        case population
+        case giniCoefficient
+        case fifa
+        case car
+        case timezones
+        case continents
+        case flags
+        case coatOfArms
+        case startOfWeek
+        case capitalInfo
+        case postalCode
+    }
+
+}
+
+extension Country.Demonym: Codable, Equatable {
+
+    private enum CodingKeys: String, CodingKey {
+        case female = "f"
+        case male = "m"
+    }
+
+}
+
+extension Country.CapitalInfo: Codable, Equatable {
+
+    private enum CodingKeys: String, CodingKey {
+        case latitudeAndLongitude = "latlng"
+    }
+
+}
+
 extension Country.Name: Codable, Equatable { }
 extension Country.Currency: Codable, Equatable { }
-extension Country.Idd: Codable, Equatable { }
+extension Country.InternationalDirectDialing: Codable, Equatable { }
 extension Country.Translation: Codable, Equatable { }
-extension Country.Denonym: Codable, Equatable { }
 extension Country.Maps: Codable, Equatable { }
 extension Country.Car: Codable, Equatable { }
 extension Country.Images: Codable, Equatable { }
-extension Country.CapitalInfo: Codable, Equatable { }
 extension Country.PostalCode: Codable, Equatable { }
 
 // MARK: - Identifiable

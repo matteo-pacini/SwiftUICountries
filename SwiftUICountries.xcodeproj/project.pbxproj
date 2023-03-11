@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		952355E429BB921500E07562 /* CountryPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952355E329BB921500E07562 /* CountryPersistenceManager.swift */; };
-		952355E629BB9B6D00E07562 /* View+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952355E529BB9B6D00E07562 /* View+Utils.swift */; };
 		952355F029BBAAEC00E07562 /* CountryListFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952355EF29BBAAEC00E07562 /* CountryListFeatureTests.swift */; };
 		953DC3C729BA0F140096A5FC /* Int+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC3C629BA0F140096A5FC /* Int+Formatting.swift */; };
 		959241E929B93FE200BADE2B /* SwiftUICountriesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959241E829B93FE200BADE2B /* SwiftUICountriesApp.swift */; };
@@ -38,7 +37,6 @@
 
 /* Begin PBXFileReference section */
 		952355E329BB921500E07562 /* CountryPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPersistenceManager.swift; sourceTree = "<group>"; };
-		952355E529BB9B6D00E07562 /* View+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Utils.swift"; sourceTree = "<group>"; };
 		952355ED29BBAAEC00E07562 /* SwiftUICountriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUICountriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		952355EF29BBAAEC00E07562 /* CountryListFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListFeatureTests.swift; sourceTree = "<group>"; };
 		953DC3C629BA0F140096A5FC /* Int+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Formatting.swift"; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 			isa = PBXGroup;
 			children = (
 				953DC3C629BA0F140096A5FC /* Int+Formatting.swift */,
-				952355E529BB9B6D00E07562 /* View+Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				95D18E4029BB3A5600100EC6 /* AppFeature.swift in Sources */,
-				952355E629BB9B6D00E07562 /* View+Utils.swift in Sources */,
 				9592420529B9453300BADE2B /* CountryRepository.swift in Sources */,
 				959241FF29B9404600BADE2B /* Country.swift in Sources */,
 				952355E429BB921500E07562 /* CountryPersistenceManager.swift in Sources */,
