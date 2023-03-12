@@ -28,7 +28,7 @@ struct CountryFeature: ReducerProtocol {
 
     }
 
-    @Dependency(\.countryPersistenceManager) var countryPersistenceManager
+    @Dependency(\.countryDatabase) var countryDatabase
 
     var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
@@ -38,7 +38,7 @@ struct CountryFeature: ReducerProtocol {
                 return .task {
                     await .neighborCountriesFetched(
                         TaskResult {
-                            try await countryPersistenceManager.fetchNeighbors(country)
+                            try await countryDatabase.fetchNeighbors(country)
                         }
                     )
                 }
@@ -179,12 +179,7 @@ struct CountryView_Previews: PreviewProvider {
             CountryView(
                 store: Store(
                     initialState: CountryFeature.State(country: .italy),
-                    reducer: withDependencies {
-                        $0.countryPersistenceManager.fetch = { [] }
-                        $0.countryPersistenceManager.store = { _ in }
-                    } operation: {
-                        CountryFeature()
-                    }
+                    reducer: CountryFeature()
                 )
             )
             .previewDisplayName("Italy")

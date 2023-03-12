@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		952355E429BB921500E07562 /* CountryPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952355E329BB921500E07562 /* CountryPersistenceManager.swift */; };
+		952355E429BB921500E07562 /* CountryDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952355E329BB921500E07562 /* CountryDatabase.swift */; };
 		952355F029BBAAEC00E07562 /* CountryListFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952355EF29BBAAEC00E07562 /* CountryListFeatureTests.swift */; };
 		953DC3C729BA0F140096A5FC /* Int+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC3C629BA0F140096A5FC /* Int+Formatting.swift */; };
 		958715E529BC07B000C1E9B3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 958715E429BC07B000C1E9B3 /* RealmSwift */; };
@@ -39,7 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		952355E329BB921500E07562 /* CountryPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPersistenceManager.swift; sourceTree = "<group>"; };
+		952355E329BB921500E07562 /* CountryDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDatabase.swift; sourceTree = "<group>"; };
 		952355ED29BBAAEC00E07562 /* SwiftUICountriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUICountriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		952355EF29BBAAEC00E07562 /* CountryListFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListFeatureTests.swift; sourceTree = "<group>"; };
 		953DC3C629BA0F140096A5FC /* Int+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Formatting.swift"; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				9592420429B9453300BADE2B /* CountryRepository.swift */,
-				952355E329BB921500E07562 /* CountryPersistenceManager.swift */,
+				952355E329BB921500E07562 /* CountryDatabase.swift */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -332,7 +332,7 @@
 				95D18E4029BB3A5600100EC6 /* AppFeature.swift in Sources */,
 				9592420529B9453300BADE2B /* CountryRepository.swift in Sources */,
 				959241FF29B9404600BADE2B /* Country.swift in Sources */,
-				952355E429BB921500E07562 /* CountryPersistenceManager.swift in Sources */,
+				952355E429BB921500E07562 /* CountryDatabase.swift in Sources */,
 				953DC3C729BA0F140096A5FC /* Int+Formatting.swift in Sources */,
 				9592420D29B94B0300BADE2B /* Country+Mock.swift in Sources */,
 				95D18E3A29BABAC800100EC6 /* CountryListFeature.swift in Sources */,

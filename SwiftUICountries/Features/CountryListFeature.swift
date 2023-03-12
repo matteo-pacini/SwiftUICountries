@@ -7,6 +7,8 @@
 
 import SwiftUI
 import ComposableArchitecture
+import RealmSwift
+import Combine
 
 // MARK: - Feature
 
@@ -21,47 +23,63 @@ struct CountryListFeature: ReducerProtocol {
     enum Action: Equatable {
         case onAppear
         case alertDismissed
-        case countriesFetched(TaskResult<[Country]>)
+        case countriedFetchedLocally(TaskResult<[Country]>)
+        case countriesDownloaded(TaskResult<[Country]>)
         case country(id: Country.ID, action: CountryFeature.Action)
     }
 
-    struct Environment {
-
-    }
-
     @Dependency(\.countryRepository) var countryRepository
-    @Dependency(\.countryPersistenceManager) var countryPersistenceManager
+    @Dependency(\.countryDatabase) var countryDatabase
 
     var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
+
             switch action {
+
             case .alertDismissed:
+
                 state.alert = nil
                 return .none
+
             case .onAppear:
+
                 state.isFetching = true
-                return .task {
-                    await .countriesFetched(TaskResult {
-                        do {
-                            let storedCountries = try await countryPersistenceManager.fetch()
-                            if !storedCountries.isEmpty {
-                                return storedCountries
-                            }
-                        } catch {
-                            debugPrint("No stored countries - proceeding with live fetch...")
-                        }
-                        let countries = try await countryRepository.fetchAll().sorted { $0.id < $1.id }
-                        try await countryPersistenceManager.store(countries)
-                        return countries
-                    })
+
+                return .publisher {
+                    countryDatabase
+                        .publisher
+                         .map(CountryListFeature.Action.countriedFetchedLocally)
                 }
-            case let .countriesFetched(.success(countries)):
-                state.isFetching = false
-                state.countries = .init(uniqueElements: countries.map { country in
-                    CountryFeature.State(country: country)
-                })
+
+            case let .countriedFetchedLocally(.success(countries)):
+
+                if !countries.isEmpty {
+                    state.isFetching = false
+                    state.countries = .init(uniqueElements: countries.map { country in
+                        CountryFeature.State(country: country)
+                    })
+                    return .none
+                }
+
+                // Fetch countries online if database is empty
+
+                return .task {
+                    await .countriesDownloaded(
+                        TaskResult {
+                            let countries = try await countryRepository.fetchAll()
+                            try await countryDatabase.store(countries)
+                            return countries
+                        }
+                    )
+                }
+
+
+            case .countriesDownloaded(.success):
                 return .none
-            case let .countriesFetched(.failure(error)):
+
+            case let .countriesDownloaded(.failure(error)),
+                 let .countriedFetchedLocally(.failure(error)):
+
                 state.isFetching = false
                 state.alert = AlertState(title: {
                     TextState("Error")
@@ -73,6 +91,7 @@ struct CountryListFeature: ReducerProtocol {
                     TextState(verbatim: error.localizedDescription)
                 })
                 return .none
+
             case .country:
                 return .none
             }
@@ -146,8 +165,6 @@ struct CountryListView_Previews: PreviewProvider {
                 initialState: CountryListFeature.State(),
                 reducer: withDependencies {
                     $0.countryRepository.fetchAll = { [] }
-                    $0.countryPersistenceManager.fetch = { [] }
-                    $0.countryPersistenceManager.store = { _ in }
                   } operation: {
                     CountryListFeature()
                   }
@@ -160,8 +177,6 @@ struct CountryListView_Previews: PreviewProvider {
                 initialState: CountryListFeature.State(),
                 reducer: withDependencies {
                     $0.countryRepository.fetchAll = { [.italy] }
-                    $0.countryPersistenceManager.fetch = { [] }
-                    $0.countryPersistenceManager.store = { _ in }
                   } operation: {
                     CountryListFeature()
                   }
