@@ -20,6 +20,9 @@ struct MapView: View {
                 .ignoresSafeArea()
         } else {
             _MapView(latitude: latitude, longitude: longitude)
+            #if os(tvOS)
+                .focusable()
+            #endif
         }
     }
 
@@ -27,7 +30,7 @@ struct MapView: View {
 
 // MARK: - Multiplatform
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 typealias ViewRepresentable = UIViewRepresentable
 #else
 typealias ViewRepresentable = NSViewRepresentable
@@ -46,7 +49,7 @@ struct _MapView: ViewRepresentable {
         Coordinator()
     }
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
     func makeUIView(context: Context) -> MKMapView {
         MKMapView(frame: .zero)
     }

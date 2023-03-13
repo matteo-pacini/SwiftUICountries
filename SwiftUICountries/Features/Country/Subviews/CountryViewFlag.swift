@@ -5,6 +5,7 @@ struct CountryViewFlag: View {
     let country: Country
 
     var body: some View {
+        
         HStack {
             Spacer()
             VStack {
@@ -34,6 +35,9 @@ struct CountryViewFlag: View {
             }
             Spacer()
         }
+        #if os(tvOS)
+        .focusable()
+        #endif
 
     }
 

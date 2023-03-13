@@ -19,6 +19,9 @@ struct CountryViewRow: View {
                 Text(LocalizedStringKey(right)).frame(minWidth: 0, maxWidth: .infinity)
             }
         }
+        #if os(tvOS)
+        .focusable()
+        #endif
     }
 
 }
@@ -37,7 +40,9 @@ struct CountryViewRowLink<Destination>: View where Destination: View {
                 Text(LocalizedStringKey(right))
             }
         }
-
+        #if os(tvOS)
+        .focusable()
+        #endif
     }
 
 }

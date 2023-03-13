@@ -2,9 +2,12 @@
 
 A simple demo app written in SwiftUI, using Swift Composable Architecture and the great [RESTCountries API](https://restcountries.com/).
 
+Works on iOS, iPadOS, tvOS and macOS.
+
 <p align="center">
 <img src="screenshots/ios.png" width="300">
 <img src="screenshots/macos.png" width="600">
+<img src="screenshots/tvos.png" width="600">
 </p>
 
 
@@ -23,6 +26,7 @@ A simple demo app written in SwiftUI, using Swift Composable Architecture and th
 - [ ] Mark a country as favorite, with favorite items showing at the top of the list
 - [ ] (macoS) Allow navigation to surrounding countries
 - [ ] watchOS 
+- [X] tvOS
 
 ## Useful resources
 
