@@ -1,6 +1,6 @@
 # SwiftUICountries
 
-A simple demo app written in SwiftUI, using The Composable Architecture and the great RESTCountries API.
+A simple demo app written in SwiftUI, using Swift Composable Architecture and the great [RESTCountries API](https://restcountries.com/).
 
 <p align="center">
 <img src="screenshots/ios.png" width="300">
@@ -19,10 +19,16 @@ A simple demo app written in SwiftUI, using The Composable Architecture and the 
 
 ## Planned features
 
-- Search country [ ]
-- Mark a country as favorite [ ]
+- [ ] Search a country
+- [ ] Mark a country as favorite, with favorite items showing at the top of the list
+- [ ] (macoS) Allow navigation to surrounding countries
+- [ ] watchOS 
 
-## Great resources
+## Useful resources
+
+- [Swift Composable Architecture repository](https://github.com/pointfreeco/swift-composable-architecture)
+- [Swift Composable Architecture videos](https://www.pointfree.co/collections/composable-architecture)
+- [Krzysztof Zabłocki: TCA Best Practices](https://www.merowing.info/the-composable-architecture-best-practices/)
 
 ## License
 
