@@ -19,7 +19,7 @@ A simple demo app written in SwiftUI, using Swift Composable Architecture and th
 
 ## Planned features
 
-- [ ] Search a country
+- [X] Search a country
 - [ ] Mark a country as favorite, with favorite items showing at the top of the list
 - [ ] (macoS) Allow navigation to surrounding countries
 - [ ] watchOS 
@@ -29,6 +29,7 @@ A simple demo app written in SwiftUI, using Swift Composable Architecture and th
 - [Swift Composable Architecture repository](https://github.com/pointfreeco/swift-composable-architecture)
 - [Swift Composable Architecture videos](https://www.pointfree.co/collections/composable-architecture)
 - [Krzysztof Zabłocki: TCA Best Practices](https://www.merowing.info/the-composable-architecture-best-practices/)
+- [TCA: Working with SwiftUI bindings](https://swiftpackageindex.com/pointfreeco/swift-composable-architecture/main/documentation/composablearchitecture/bindings)
 
 ## License
 

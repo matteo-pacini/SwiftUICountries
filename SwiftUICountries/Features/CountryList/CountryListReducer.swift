@@ -5,13 +5,16 @@ struct CountryListReducer: ReducerProtocol {
 
     struct State: Equatable {
         var isFetching: Bool = false
+        @BindingState var query: String = ""
         var countries: IdentifiedArrayOf<CountryReducer.State> = []
+        var allCountries: [Country] = []
         var alert: AlertState<Action>?
     }
 
-    enum Action: Equatable {
+    enum Action: Equatable, BindableAction {
         case onAppear
         case alertDismissed
+        case binding(BindingAction<State>)
         case countriedFetchedLocally(TaskResult<[Country]>)
         case countriesDownloaded(TaskResult<[Country]>)
         case country(id: Country.ID, action: CountryReducer.Action)
@@ -21,6 +24,9 @@ struct CountryListReducer: ReducerProtocol {
     @Dependency(\.countryDatabase) var countryDatabase
 
     var body: some ReducerProtocol<State, Action> {
+
+        BindingReducer()
+
         Reduce { state, action in
 
             switch action {
@@ -40,11 +46,25 @@ struct CountryListReducer: ReducerProtocol {
                          .map(CountryListReducer.Action.countriedFetchedLocally)
                 }
 
+            case .binding(\.$query):
+
+                let filteredCountries = state.query.isEmpty ? state.allCountries : state.allCountries.filter { $0.id.contains(state.query) }
+
+                state.countries = .init(uniqueElements: filteredCountries.map { country in
+                    CountryReducer.State(country: country)
+                })
+
+                return .none
+
+            case .binding:
+                return .none
+
             case let .countriedFetchedLocally(.success(countries)):
 
                 if !countries.isEmpty {
                     state.isFetching = false
-                    state.countries = .init(uniqueElements: countries.map { country in
+                    state.allCountries = countries
+                    state.countries = .init(uniqueElements: state.allCountries.map { country in
                         CountryReducer.State(country: country)
                     })
                     return .none

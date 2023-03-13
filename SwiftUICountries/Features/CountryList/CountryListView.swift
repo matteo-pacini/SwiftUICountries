@@ -12,33 +12,29 @@ struct CountryListView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {
-                if viewStore.countries.isEmpty {
-                    VStack {
-                        if viewStore.isFetching {
-                            HStack {
-                                Text("countryList.fetching")
-                                ProgressView()
-                            }
-                        } else {
+                List {
+                    if viewStore.isFetching {
+                        Text("countryList.fetching")
+                    } else {
+                        if viewStore.countries.isEmpty {
                             Text("countryList.empty")
+                        } else {
+                            ForEachStore(
+                                store.scope(state: \.countries, action:CountryListReducer.Action.country(id:action:))
+                            ) { (childStore: StoreOf<CountryReducer>) in
+                                NavigationLink(destination: {
+                                    CountryView(store: childStore)
+                                }, label: {
+                                    WithViewStore(childStore, observe: \.country) { childViewStore in
+                                        Text(verbatim: "\(childViewStore.flag) \(childViewStore.name.common)")
+                                    }
+                                })
+                            }
                         }
                     }
-                } else {
-                    List {
-                        ForEachStore(
-                            store.scope(state: \.countries, action:CountryListReducer.Action.country(id:action:))
-                        ) { (childStore: StoreOf<CountryReducer>) in
-                            NavigationLink(destination: {
-                                CountryView(store: childStore)
-                            }, label: {
-                                WithViewStore(childStore, observe: \.country) { childViewStore in
-                                    Text(verbatim: "\(childViewStore.flag) \(childViewStore.name.common)")
-                                }
-                            })
-                        }
-                    }
-                    .navigationTitle(Text("countryList.navigationTitle"))
                 }
+                .searchable(text: viewStore.binding(\.$query))
+                .navigationTitle(Text("countryList.navigationTitle"))
             }
             #if os(iOS)
             // https://forums.swift.org/t/how-to-manage-foreachstore-with-navigationlinks-binding/36459/2

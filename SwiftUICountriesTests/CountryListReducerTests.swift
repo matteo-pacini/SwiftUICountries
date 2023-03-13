@@ -24,9 +24,44 @@ final class CountryListReducerTests: XCTestCase {
 
         await store.receive(.countriedFetchedLocally(.success([.italy]))) {
             $0.isFetching = false
+            $0.allCountries = [.italy]
             $0.countries = .init(uniqueElements:
                 [.init(country: .italy)]
             )
+        }
+
+    }
+
+    func testOnQueryUpdateListIsUpdated() async {
+
+        let allCountries = [Country.italy]
+
+        let store = TestStore(initialState: CountryListReducer.State(countries: .init(uniqueElements: [.init(country: .italy)]),
+                                                                     allCountries: allCountries),
+                              reducer: CountryListReducer())
+
+        store.exhaustivity = .on
+
+        await store.send(.set(\.$query, "Spain")) {
+            // No matches
+            $0.query = "Spain"
+            $0.countries = .init(uniqueElements:
+                []
+            )
+        }
+
+        await store.send(.set(\.$query, "Ita")) {
+            // 1 match
+            $0.query = "Ita"
+            $0.countries = .init(uniqueElements:
+                [.init(country: .italy)]
+            )
+        }
+
+        await store.send(.set(\.$query, "")) {
+            // Empty search = list is not filtered
+            $0.query = ""
+            $0.countries = .init(uniqueElements: allCountries.map { .init(country: $0) })
         }
 
     }
