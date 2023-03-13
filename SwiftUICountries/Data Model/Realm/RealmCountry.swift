@@ -98,6 +98,7 @@ final class RealmCountry: Object {
     @Persisted var startOfWeek: String = ""
     @Persisted var capitalInfo: RealmCapitalInfo?
     @Persisted var postalCode: RealmPostalCode?
+    @Persisted var favorite: Bool = false
 
 }
 
@@ -376,7 +377,8 @@ extension RealmCountry {
                 coatOfArms: coatOfArms!.toModel(),
                 startOfWeek: startOfWeek,
                 capitalInfo: capitalInfo!.toModel(),
-                postalCode: postalCode?.toModel())
+                postalCode: postalCode?.toModel(),
+                favorite: favorite)
     }
 
 }

@@ -13,6 +13,8 @@ struct CountryReducer: ReducerProtocol {
         case onAppear
         case neighborCountriesFetched(TaskResult<[Country]>)
         case neighborCountry(id: Country.ID, action: Action)
+        case favoriteTapped
+        case favoriteToggled
     }
 
     @Dependency(\.countryDatabase) var countryDatabase
@@ -36,6 +38,14 @@ struct CountryReducer: ReducerProtocol {
                 // Propagated to parent
                 return .none
             case .neighborCountry:
+                return .none
+            case .favoriteTapped:
+                let country = state.country
+                return .task {
+                    try await countryDatabase.toggleFavorite(country)
+                    return .favoriteToggled
+                }
+            case .favoriteToggled:
                 return .none
             }
         }

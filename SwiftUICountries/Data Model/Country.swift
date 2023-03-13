@@ -89,11 +89,13 @@ struct Country {
     let capitalInfo: CapitalInfo
     let postalCode: PostalCode?
 
+    let favorite: Bool
+
 }
 
-// MARK: - Codable + Equatable
+// MARK: - Decodable + Equatable
 
-extension Country: Codable, Equatable {
+extension Country: Decodable, Equatable {
 
     private enum CodingKeys: String, CodingKey {
         case name
@@ -133,9 +135,49 @@ extension Country: Codable, Equatable {
         case postalCode
     }
 
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(.name)
+        topLevelDomains = try container.decodeIfPresent(.topLevelDomains)
+        cca2 = try container.decode(.cca2)
+        ccn3 =  try container.decodeIfPresent(.ccn3)
+        cca3 = try container.decode(.cca3)
+        cioc = try container.decodeIfPresent(.cioc)
+        independent = try container.decodeIfPresent(.independent)
+        status = try container.decode(.status)
+        unMember = try container.decode(.unMember)
+        currencies = try container.decodeIfPresent(.currencies)
+        internationalDirectDialing = try container.decode(.internationalDirectDialing)
+        capital = try container.decodeIfPresent(.capital)
+        altSpellings = try container.decode(.altSpellings)
+        region = try container.decode(.region)
+        subregion = try container.decodeIfPresent(.subregion)
+        languages = try container.decodeIfPresent(.languages)
+        translations = try container.decode(.translations)
+        latitudeAndLongitude = try container.decode(.latitudeAndLongitude)
+        landlocked = try container.decode(.landlocked)
+        borders = try container.decodeIfPresent(.borders)
+        area = try container.decode(.area)
+        demonyms = try container.decodeIfPresent(.demonyms)
+        flag = try container.decode(.flag)
+        maps = try container.decode(.maps)
+        population = try container.decode(.population)
+        giniCoefficient = try container.decodeIfPresent(.giniCoefficient)
+        fifa = try container.decodeIfPresent(.fifa)
+        car = try container.decode(.car)
+        timezones = try container.decode(.timezones)
+        continents = try container.decode(.continents)
+        flags = try container.decode(.flags)
+        coatOfArms = try container.decode(.coatOfArms)
+        startOfWeek = try container.decode(.startOfWeek)
+        capitalInfo = try container.decode(.capitalInfo)
+        postalCode = try container.decodeIfPresent(.postalCode)
+        favorite = false
+    }
+
 }
 
-extension Country.Demonym: Codable, Equatable {
+extension Country.Demonym: Decodable, Equatable {
 
     private enum CodingKeys: String, CodingKey {
         case female = "f"
@@ -144,7 +186,7 @@ extension Country.Demonym: Codable, Equatable {
 
 }
 
-extension Country.CapitalInfo: Codable, Equatable {
+extension Country.CapitalInfo: Decodable, Equatable {
 
     private enum CodingKeys: String, CodingKey {
         case latitudeAndLongitude = "latlng"
@@ -152,14 +194,14 @@ extension Country.CapitalInfo: Codable, Equatable {
 
 }
 
-extension Country.Name: Codable, Equatable { }
-extension Country.Currency: Codable, Equatable { }
-extension Country.InternationalDirectDialing: Codable, Equatable { }
-extension Country.Translation: Codable, Equatable { }
-extension Country.Maps: Codable, Equatable { }
-extension Country.Car: Codable, Equatable { }
-extension Country.Images: Codable, Equatable { }
-extension Country.PostalCode: Codable, Equatable { }
+extension Country.Name: Decodable, Equatable { }
+extension Country.Currency: Decodable, Equatable { }
+extension Country.InternationalDirectDialing: Decodable, Equatable { }
+extension Country.Translation: Decodable, Equatable { }
+extension Country.Maps: Decodable, Equatable { }
+extension Country.Car: Decodable, Equatable { }
+extension Country.Images: Decodable, Equatable { }
+extension Country.PostalCode: Decodable, Equatable { }
 
 // MARK: - Identifiable
 

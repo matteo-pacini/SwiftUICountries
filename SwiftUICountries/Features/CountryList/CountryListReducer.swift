@@ -48,7 +48,7 @@ struct CountryListReducer: ReducerProtocol {
 
             case .binding(\.$query):
 
-                let filteredCountries = state.query.isEmpty ? state.allCountries : state.allCountries.filter { $0.id.contains(state.query) }
+                let filteredCountries = state.query.isEmpty ? state.allCountries : state.allCountries.filter { $0.id.lowercased().contains(state.query.lowercased()) }
 
                 state.countries = .init(uniqueElements: filteredCountries.map { country in
                     CountryReducer.State(country: country)

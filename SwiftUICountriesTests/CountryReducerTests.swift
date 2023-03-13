@@ -27,4 +27,22 @@ final class CountryReducerTests: XCTestCase {
 
     }
 
+    func testTriggersFavoriteActionsCorrectly() async {
+
+        let store = TestStore(initialState: CountryReducer.State(country: .italy),
+                              reducer: withDependencies {
+            $0.countryDatabase.fetchNeighbors = { _ in [] }
+            $0.countryDatabase.toggleFavorite = { _ in }
+        } operation: {
+            CountryReducer()
+        })
+
+        store.exhaustivity = .on
+
+        await store.send(.favoriteTapped)
+
+        await store.receive(.favoriteToggled)
+
+    }
+
 }

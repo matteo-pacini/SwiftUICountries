@@ -11,6 +11,7 @@
 		952355F029BBAAEC00E07562 /* CountryListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952355EF29BBAAEC00E07562 /* CountryListReducerTests.swift */; };
 		953DC3C729BA0F140096A5FC /* Int+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC3C629BA0F140096A5FC /* Int+Formatting.swift */; };
 		95533F3329BDDF8B005A6BE2 /* CountryListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95533F3229BDDF8B005A6BE2 /* CountryListReducer.swift */; };
+		955CA62E29BFB96800EC04BC /* KeyedDecodingContainer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955CA62D29BFB96800EC04BC /* KeyedDecodingContainer+Utils.swift */; };
 		958715E529BC07B000C1E9B3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 958715E429BC07B000C1E9B3 /* RealmSwift */; };
 		958715E829BC081C00C1E9B3 /* RealmCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715E729BC081C00C1E9B3 /* RealmCountry.swift */; };
 		958715EE29BC7FE600C1E9B3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 958715ED29BC7FE600C1E9B3 /* RealmSwift */; };
@@ -50,6 +51,7 @@
 		952355EF29BBAAEC00E07562 /* CountryListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListReducerTests.swift; sourceTree = "<group>"; };
 		953DC3C629BA0F140096A5FC /* Int+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Formatting.swift"; sourceTree = "<group>"; };
 		95533F3229BDDF8B005A6BE2 /* CountryListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListReducer.swift; sourceTree = "<group>"; };
+		955CA62D29BFB96800EC04BC /* KeyedDecodingContainer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyedDecodingContainer+Utils.swift"; sourceTree = "<group>"; };
 		958715E729BC081C00C1E9B3 /* RealmCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCountry.swift; sourceTree = "<group>"; };
 		959241E529B93FE200BADE2B /* SwiftUICountries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUICountries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		959241E829B93FE200BADE2B /* SwiftUICountriesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICountriesApp.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				953DC3C629BA0F140096A5FC /* Int+Formatting.swift */,
 				95CEAF6829BE832300214D06 /* Publisher+TaskResult.swift */,
+				955CA62D29BFB96800EC04BC /* KeyedDecodingContainer+Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				959241FF29B9404600BADE2B /* Country.swift in Sources */,
 				952355E429BB921500E07562 /* CountryDatabase.swift in Sources */,
 				953DC3C729BA0F140096A5FC /* Int+Formatting.swift in Sources */,
+				955CA62E29BFB96800EC04BC /* KeyedDecodingContainer+Utils.swift in Sources */,
 				9592420D29B94B0300BADE2B /* Country+Mock.swift in Sources */,
 				95D18E3A29BABAC800100EC6 /* CountryListView.swift in Sources */,
 				9592421829B967C000BADE2B /* MapView.swift in Sources */,

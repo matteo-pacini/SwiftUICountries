@@ -23,7 +23,7 @@ Works on iOS, iPadOS, tvOS and macOS.
 ## Planned features
 
 - [X] Search a country
-- [ ] Mark a country as favorite, with favorite items showing at the top of the list
+- [X] Mark a country as favorite (❤️)
 - [ ] (macoS) Allow navigation to surrounding countries
 - [ ] watchOS 
 - [X] tvOS

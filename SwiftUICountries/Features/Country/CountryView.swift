@@ -104,6 +104,17 @@ struct CountryView: View {
             .onAppear {
                 viewStore.send(.onAppear)
             }
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: {
+                        viewStore.send(.favoriteTapped)
+                    }, label: {
+                        viewStore.country.favorite ?
+                        Image(systemName: "heart.fill").foregroundColor(.red) :
+                        Image(systemName: "heart").foregroundColor(.red)
+                    })
+                }
+            }
         }
     }
 

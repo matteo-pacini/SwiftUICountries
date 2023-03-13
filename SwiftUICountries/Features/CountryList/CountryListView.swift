@@ -26,9 +26,10 @@ struct CountryListView: View {
                                     CountryView(store: childStore)
                                 }, label: {
                                     WithViewStore(childStore, observe: \.country) { childViewStore in
-                                        Text(verbatim: "\(childViewStore.flag) \(childViewStore.name.common)")
+                                        Text(verbatim: "\(childViewStore.favorite ? "❤️ " : "")\(childViewStore.flag) \(childViewStore.name.common)")
                                     }
                                 })
+
                             }
                         }
                     }

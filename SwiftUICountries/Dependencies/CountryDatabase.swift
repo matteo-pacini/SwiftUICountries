@@ -9,6 +9,7 @@ struct CountryDatabase {
     var publisher: AnyPublisher<TaskResult<[Country]>, Never>
     var fetchNeighbors: (Country) async throws -> [Country]
     var store: ([Country]) async throws -> Void
+    var toggleFavorite: (Country) async throws -> Void
 }
 
 // MARK: - Country / Live Implementation
@@ -46,6 +47,16 @@ extension CountryDatabase: DependencyKey {
             try Realm().add(realmModels)
         }
     
+    }, toggleFavorite: { country in
+
+        try Realm()
+            .objects(RealmCountry.self)
+            .filter("name.common = %@", country.name.common)
+            .forEach { result in
+                try Realm().write {
+                    result.favorite = !result.favorite
+                }
+            }
     })
 
 }
