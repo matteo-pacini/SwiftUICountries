@@ -1,12 +1,6 @@
-//
-//  Country+Mock.swift
-//  SwiftUICountries
-//
-//  Created by Matteo Pacini on 08/03/2023.
-//
-
 import Foundation
 
+#if DEBUG
 extension Country {
 
     static var italy: Self {
@@ -233,3 +227,4 @@ extension Country {
     }
 
 }
+#endif

@@ -1,0 +1,27 @@
+"generic.yes" = "Yes";
+"generic.no" = "No";
+"generic.error" = "Error";
+"generic.dismiss" = "Dismiss";
+
+"countryList.navigationTitle" = "Countries";
+"countryList.fetching" = "Fetching countries...";
+"countryList.empty" = "No countries to display.";
+
+"country.section.details" = "Details";
+"country.section.details.officialName" = "Official name";
+"country.section.details.independent" = "Independent";
+"country.section.details.unMember" = "UN Member";
+"country.section.details.region" = "Region";
+"country.section.details.subregion" = "Subregion";
+"country.section.details.capital" = "Capital";
+"country.section.details.population" = "Population";
+
+"country.section.borders" = "Borders";
+
+"country.section.currencies" = "Currencies";
+
+"country.section.dailyLife" = "Daily Life";
+"country.section.dailyLife.startOfWeek" = "Start Of Week";
+"country.section.dailyLife.drivingSide" = "Driving Side";
+
+"country.section.timezones" = "Timezones";

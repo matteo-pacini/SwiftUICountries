@@ -1,12 +1,7 @@
-//
-//  RealmCountry.swift
-//  SwiftUICountries
-//
-//  Created by Matteo Pacini on 11/03/2023.
-//
-
 import RealmSwift
 import Foundation
+
+// MARK: - Embedded Objects
 
 final class RealmName: EmbeddedObject {
     @Persisted var common: String = ""
@@ -64,6 +59,8 @@ final class RealmPostalCode: EmbeddedObject {
     @Persisted var regex: String?
 }
 
+// MARK: - Object
+
 final class RealmCountry: Object {
 
     @Persisted var name: RealmName?
@@ -104,7 +101,7 @@ final class RealmCountry: Object {
 
 }
 
-// MARK: - Realm <-> Value Type Translation
+// MARK: - RealmCountry <-> Country
 
 extension RealmName {
 

@@ -1,10 +1,3 @@
-//
-//  CountryViewMap.swift
-//  SwiftUICountries
-//
-//  Created by Matteo Pacini on 09/03/2023.
-//
-
 import SwiftUI
 import MapKit
 

@@ -1,10 +1,3 @@
-//
-//  CountryPersistenceManager.swift
-//  SwiftUICountries
-//
-//  Created by Matteo Pacini on 10/03/2023.
-//
-
 import Foundation
 import ComposableArchitecture
 import RealmSwift
@@ -64,18 +57,6 @@ extension DependencyValues {
     var countryDatabase: CountryDatabase {
         get { self[CountryDatabase.self] }
         set { self[CountryDatabase.self] = newValue }
-    }
-
-}
-
-extension Publisher where Failure: Error {
-
-    func catchToResult() -> AnyPublisher<TaskResult<Output>, Never> {
-        self.map { TaskResult.success($0) }
-        .catch { error in
-            return Just(.failure(error))
-        }
-        .eraseToAnyPublisher()
     }
 
 }

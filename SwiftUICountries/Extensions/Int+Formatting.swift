@@ -1,10 +1,3 @@
-//
-//  Numeric+Formatting.swift
-//  SwiftUICountries
-//
-//  Created by Matteo Pacini on 09/03/2023.
-//
-
 import Foundation
 
 let displayFormatter: NumberFormatter = {

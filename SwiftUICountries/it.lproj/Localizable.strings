@@ -1,0 +1,28 @@
+"generic.yes" = "Sì";
+"generic.no" = "No";
+"generic.error" = "Errore";
+"generic.dismiss" = "Chiudi";
+
+"countryList.navigationTitle" = "Nazioni";
+"countryList.fetching" = "Scaricamento delle nazioni in corso...";
+"countryList.empty" = "Nessuna nazione trovata.";
+
+"country.section.details" = "Dettagli";
+"country.section.details.officialName" = "Nome ufficiale";
+"country.section.details.independent" = "Indipendente";
+"country.section.details.unMember" = "Membro Nazioni Unite";
+"country.section.details.region" = "Regione";
+"country.section.details.subregion" = "Sottoregione";
+"country.section.details.capital" = "Capitale";
+"country.section.details.population" = "Popolazione";
+
+"country.section.borders" = "Confini";
+
+"country.section.currencies" = "Valute";
+
+"country.section.dailyLife" = "Vita quotidiana";
+
+"country.section.dailyLife.startOfWeek" = "Inizio settimana";
+"country.section.dailyLife.drivingSide" = "Lato di guida";
+
+"country.section.timezones" = "Fusi orari";
