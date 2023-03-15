@@ -15,6 +15,7 @@ This project serves as an example of clean and modular app development using the
 ## Features ✨
 
 - Browse a list of countries with basic information
+- Add a country to favorites
 - View detailed country profiles, including:
   - Flag
   - Capital (including map)
@@ -67,15 +68,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgements 💡
 
 - [RESTCountries API](https://restcountries.com) - API used for fetching country information
-- [Point-Free](https://www.pointfree.co) - For their work on Composable Architecture
+- [Point-Free](https://www.pointfree.co) - For their great work on Composable Architecture
 
 ## 🌟 Useful Resources
 
 Enhance your knowledge and skills in SwiftUI and Composable Architecture with these valuable resources:
 
-- 1) [Swift Composable Architecture videos](https://www.pointfree.co/collections/composable-architecture) - A collection of informative videos about TCA from Point-Free.
-- 2) [Krzysztof Zabłocki: TCA Best Practices](https://www.merowing.info/the-composable-architecture-best-practices/) - A blog post highlighting best practices for using TCA in your projects.
-- 3) [TCA: Working with SwiftUI bindings](https://swiftpackageindex.com/pointfreeco/swift-composable-architecture/main/documentation/composablearchitecture/bindings) - A guide on how to effectively work with SwiftUI bindings in the context of TCA.
+1) [Swift Composable Architecture videos](https://www.pointfree.co/collections/composable-architecture) - A collection of informative videos about TCA from Point-Free.
+2) [Krzysztof Zabłocki: TCA Best Practices](https://www.merowing.info/the-composable-architecture-best-practices/) - A blog post highlighting best practices for using TCA in your projects.
+3) [TCA: Working with SwiftUI bindings](https://swiftpackageindex.com/pointfreeco/swift-composable-architecture/main/documentation/composablearchitecture/bindings) - A guide on how to effectively work with SwiftUI bindings in the context of TCA.
 
 Happy learning! 📚
 
