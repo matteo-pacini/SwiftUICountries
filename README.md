@@ -78,9 +78,6 @@ Enhance your knowledge and skills in SwiftUI and Composable Architecture with th
 2) [Krzysztof Zabłocki: TCA Best Practices](https://www.merowing.info/the-composable-architecture-best-practices/) - A blog post highlighting best practices for using TCA in your projects.
 3) [TCA: Working with SwiftUI bindings](https://swiftpackageindex.com/pointfreeco/swift-composable-architecture/main/documentation/composablearchitecture/bindings) - A guide on how to effectively work with SwiftUI bindings in the context of TCA.
 
-Happy learning! 📚
-
-
 ---
 
 Happy coding, and don't hesitate to reach out with any questions or suggestions! 🌟
